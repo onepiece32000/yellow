@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員註冊</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>會員註冊</h1>
+    <form action="/register" method="post">
+        <div>
+            <label for="username">帳號：</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">密碼：</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="email">電子郵件：</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <input type="submit" value="註冊">
+        </div>
+    <div class="google-login">
+        <a href="https://accounts.google.com/o/oauth2/auth?client_id=1050724618857-7ap8cqt8kojjiv201se5166s8f422u2a.apps.googleusercontent.com&redirect_uri=http://redyellow.org.tw&response_type=code&scope=email">使用 Google 帳號登入</a>
+    </div>
+		
+    </form>
+</body>
+</html>

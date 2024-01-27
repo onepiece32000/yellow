@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Number Calculator</title>
+</head>
+<body>
+
+<h1>Square Number Calculator</h1>
+
+<label for="inputNumber">Enter a number:</label>
+<input type="number" id="inputNumber" placeholder="Enter a number">
+
+<button onclick="calculateSquare()">Calculate Square</button>
+
+<p id="result"></p>
+
+<script>
+    function squareNumber(num) {
+        return num ** 2;//計算的直皆是2的平方
+    }
+
+    function calculateSquare() {
+        // 取得輸入框中的數字
+        let inputElement = document.getElementById("inputNumber");
+        let inputNumber = parseFloat(inputElement.value);
+
+        // 檢查是否為有效數字
+        if (!isNaN(inputNumber)) {
+            // 計算平方
+            let result = squareNumber(inputNumber);
+
+            // 顯示結果
+            document.getElementById("result").innerText = `The square of ${inputNumber} is: ${result}`;
+        } else {
+            // 若輸入無效，顯示錯誤訊息
+            document.getElementById("result").innerText = "Please enter a valid number.";
+        }
+    }
+</script>
+
+</body>
+</html>

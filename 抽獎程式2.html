@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽獎程式</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e0e0;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        h1 {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #ff0000;
+            display: inline-block;
+            animation: sparkle 1s infinite;
+        }
+
+        #confetti {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: grab;
+}
+
+.confetti {
+    position: absolute;
+    width: 5px;
+    height: 10px; /* 調整高度以改變形狀 */
+    background-color: #f00;
+    animation: confetti-fall 3s linear infinite, smoke-rise 5s linear infinite;
+}
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+@keyframes sparkle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 將動畫時間設為10秒，並不再無限循環播放 */
+.sparkle {
+    animation: sparkle 10s;
+}
+
+
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <button onclick="drawPrize()">命運的按鈕，按我一下</button>
+	<h1>恭喜：</h1>
+    <div id="result" class="winner-list"></div>
+</div>
+
+<div id="confetti"></div>
+<div id="smoke"></div>
+
+<script>
+    var participants = [];
+    
+
+    for (var i = 1; i <= 150; i++) {
+        participants.push( + i);
+    }
+
+    function drawPrize() {
+        if (participants.length === 0) {
+            alert("所有參與者都已中獎！");
+            return;
+        }
+
+        var randomIndex = Math.floor(Math.random() * participants.length);
+        var winner = participants[randomIndex];
+ 
+
+        var resultElement = document.getElementById("result");
+        resultElement.innerHTML = "中獎者： <span class='sparkle'>" + winner + "</span>";
+
+        // 添加淡入效果
+        resultElement.style.opacity = 0;
+        setTimeout(function () {
+            resultElement.style.opacity = 1;
+        }, 10);
+
+        // 觸發灑花特效和煙霧特效
+        triggerConfetti();
+
+        // 從參與者名單中移除中獎者
+        participants.splice(randomIndex, 1);
+    }
+
+      function triggerConfetti() {
+        var confettiContainer = document.getElementById("confetti");
+        confettiContainer.innerHTML = "";
+
+        for (var i = 0; i < 50; i++) {
+            var confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.animationDuration = Math.random() * 3 + 1 + "s";
+            confettiContainer.appendChild(confetti);
+        }
+
+        confettiContainer.style.display = "block";
+
+        // 清除灑花
+        setTimeout(function () {
+            confettiContainer.style.display = "none";
+        }, 5000);
+    }
+</script>
+
+</body>
+</html>

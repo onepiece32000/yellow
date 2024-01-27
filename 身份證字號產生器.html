@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #idNumber {
+            font-size: 18px;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>ID Generator</h1>
+    <p id="idNumber">Generated ID Number:</p>
+    <button onclick="generateId()">Generate ID</button>
+
+    <script>
+        function generateId() {
+            var idNumber = generateIdNumber();
+            document.getElementById("idNumber").innerText = "Generated ID Number: " + idNumber;
+        }
+
+        function generateIdNumber() {
+            // 固定使用 'R' 或 'A' 開頭
+            var firstChar = Math.random() < 0.5 ? 'R' : 'A';
+
+            // 隨機生成區域碼（後一碼）
+            var regionCode = String(Math.floor(Math.random() * (99 - 10 + 1)) + 10);
+
+            // 隨機生成性別碼（第三碼）
+            var genderCode = String(Math.floor(Math.random() * 2) + 1);
+
+            // 隨機生成出生日期（後六碼）
+            var birthDate = String(Math.floor(Math.random() * (99 - 10 + 1)) + 10) +
+                            String(Math.floor(Math.random() * 12) + 1).padStart(2, '0') +
+                            String(Math.floor(Math.random() * 28) + 1).padStart(2, '0');
+
+            // 生成檢查碼（最後一碼）
+            var idWithoutCheck = firstChar + regionCode + genderCode + birthDate;
+            var checkCode = generateCheckCode(idWithoutCheck);
+
+            // 組合生成的身分證字號
+            var idNumber = firstChar + regionCode + genderCode + birthDate + checkCode;
+
+            return idNumber;
+        }
+
+        function generateCheckCode(idWithoutCheck) {
+            // 計算檢查碼
+            var weights = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
+            var total = idWithoutCheck.split('').reduce(function(sum, digit, index) {
+                return sum + (index === 0 ? digit.charCodeAt(0) - 55 : parseInt(digit)) * weights[index];
+            }, 0);
+            var checkCode = (10 - (total % 10)) % 10;
+            return String(checkCode);
+        }
+    </script>
+</body>
+</html>

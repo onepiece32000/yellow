@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+<!--font-family: Arial, sans-serif;: 設置文字字體。如果電腦上有 Arial 字體，則使用 Arial 字體，否則使用 sans-serif 字體，這是一個通用的無襯線字體。text-align: center;: 將文字內容置中對齊。margin: 50px;: 設置元素的外邊距（margin），在這裡是將 body 元素的外邊距設置為 50 像素，這樣會在網頁的四個邊緣增加 50 像素的空白。-->
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+<!-->padding: 8px;: 設定元素內容與邊框之間的內邊距為 8 像素。這樣的設置會在 input 元素的內容周圍增加 8 像素的空白。
+
+font-size: 16px;: 設定文字的字體大小為 16 像素。這樣的設置會影響到 input 元素中文字的大小。<-->
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+<!-->button 樣式：
+padding: 8px 16px;: 設定按鈕的內邊距，上下為 8 像素，左右為 16 像素。這樣的設置會確保按鈕有一定的填充空間。
+font-size: 16px;: 設定按鈕文字的字體大小為 16 像素。cursor: pointer;: 設定鼠標懸停在按鈕上時的樣式為指針，表示它是可點擊的。<-->
+        div {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+<!-->margin-top: 20px;: 設定 div 元素上方的外邊距為 20 像素。這樣的設置會在 div 元素的頂部增加 20 像素的空白。font-size: 18px;: 設定 div 元素內文字的字體大小為 18 像素。<-->
+    </style>
+</head>
+<body>
+    <h1>Reverse String</h1>
+    <input type="text" id="inputText" placeholder="Enter text...">
+	<!--創建一個文本輸入框，其 id 被設置為 "inputText"，placeholder 屬性用於在輸入框中顯示提示文字。-->
+    <button onclick="reverseString()">Reverse</button>
+    <!-->創建一個按鈕，當單擊時會調用名為 reverseString 的 JavaScript 函數。<-->
+	<div id="output"></div>
+	<!-->創建一個 div 元素，其 id 被設置為 "output"，用於顯示反轉後的文字。<-->
+    <script>
+        function reverseString() {
+            var inputText = document.getElementById("inputText").value;
+            //獲取文本輸入框中inputText的值。
+			var reversedText = inputText.split("").reverse().join("");
+            //輸入的文字拆分為字符數組，使用 reverse() 反轉字符數組，最後使用 join("") 將字符數組連接為字符串。
+				document.getElementById("output").innerText = "Reversed: " + reversedText;
+			//將反轉後的文字顯示在 div 元素中
+		}
+    </script>
+</body>
+</html>

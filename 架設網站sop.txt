@@ -1,0 +1,173 @@
+安裝Apache網頁伺服器：
+打開終端機或遠端連線到你的甲骨文Linux伺服器。
+
+使用以下指令安裝Apache：
+
+
+Copy code
+sudo yum update
+sudo yum install httpd
+安裝完成後，啟動Apache服務：
+
+
+Copy code
+sudo systemctl start httpd
+確認Apache是否正常運行，也將它設定為開機自動啟動：
+
+
+Copy code
+sudo systemctl enable httpd
+現在，開啟瀏覽器，在網址列輸入你的伺服器IP位址或網域名稱，應該會看到Apache預設頁面，表示Apache已經成功安裝。
+
+查Apache服務狀態：
+sudo systemctl status httpd
+
+停用防火牆
+sudo systemctl stop firewalld
+
+ IP 位址換成網址
+ cd /etc/hosts
+ 10.0.2.15  myvirtualmachine
+ 
+ 
+ 
+ 安裝編程語言
+
+確認是否已經安裝
+php -v
+如果還未安裝，你可以使用以下指令安裝 
+
+sudo yum install php
+
+Python：
+sudo yum install python3
+
+Node.js：
+sudo yum install nodejs
+ 
+ 建立網站檔案目錄結構：
+ 
+ /var/www/html/
+    ├── index.html       # 網站首頁檔案
+    ├── css/             # 存放 CSS 檔案的目錄
+    │   └── style.css
+    ├── js/              # 存放 JavaScript 檔案的目錄
+    │   └── script.js
+    └── images/          # 存放圖片的目錄
+        └── logo.png
+		
+sudo mkdir -p /var/www/html/css
+sudo mkdir -p /var/www/html/js
+sudo mkdir -p /var/www/html/images
+
+編寫網站內容和前端程式碼：
+sudo nano /var/www/html/index.html
+sudo vim /var/www/html/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is the home page of my website.</p>
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+安裝 MySQL 伺服器：
+
+
+sudo yum install mysql-server
+啟動 MySQL 伺服器：
+
+
+sudo systemctl start mysqld
+設定 MySQL 根密碼：
+
+sudo mysql_secure_installation
+遵循指示來設定 MySQL 根密碼和其他相關設定。
+
+連接到 MySQL 伺服器：
+
+
+mysql -u root -p
+輸入之前設定的根密碼來登入 MySQL。
+
+建立你的網站所需的資料庫和表格。
+
+在你的網站程式碼中，使用相應的程式庫或套件來連接到 MySQL 資料庫並進行資料操作。
+
+
+
+
+1. 設定虛擬主機 (Virtual Host)：
+開啟 Apache 設定檔案：使用 root 或具有管理權限的使用者來編輯 Apache 的設定檔案。
+
+bash
+Copy code
+sudo nano /etc/httpd/conf/httpd.conf
+確認以下兩行是否被取消註解 (即行首沒有 # 符號)：
+
+bash
+Copy code
+LoadModule vhost_alias_module modules/mod_vhost_alias.so
+Include conf/extra/httpd-vhosts.conf
+如果這兩行前面有 # 符號，請移除註解以啟用這兩個功能。
+
+新增虛擬主機設定：在設定檔案末尾，添加以下虛擬主機設定，將其中的路徑和主機名稱修改為你的網站目錄和主機名稱。
+
+apache
+Copy code
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    DocumentRoot /var/www/html
+    ServerName myvirtualmachine
+
+    ErrorLog /var/log/httpd/myvirtualmachine-error.log
+    CustomLog /var/log/httpd/myvirtualmachine-access.log common
+</VirtualHost>
+這將設定一個虛擬主機，將 myvirtualmachine 這個主機名稱映射到 /var/www/html 這個網站目錄。
+
+儲存檔案：按下 Ctrl + O 來儲存檔案。然後按下 Ctrl + X 來離開編輯器。
+
+2. 設定網站目錄：
+確保你的網站檔案位於 /var/www/html/ 目錄中，這是 Apache 預設的網站目錄。
+
+3. 啟用 Apache 服務和重新啟動：
+啟用 Apache 服務：
+
+
+sudo systemctl enable httpd
+重新啟動 Apache 服務：
+
+Copy code
+sudo systemctl restart httpd
+
+
+確認防火牆規則（可選）：
+
+如果你的甲骨文 Linux 伺服器有防火牆，確保你開放了 HTTP（80）和 HTTPS（443）等相關端口，以便外部用戶可以訪問你的網站。
+
+在 CentOS/RHEL 上，你可以使用 firewall-cmd 命令進行設定：
+
+
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --add-service=https --permanent
+sudo firewall-cmd --reload
+
+創建目錄和檔案：如果找到了正確的目錄，請確保該目錄存在並創建 httpd-vhosts.conf 檔案。例如：
+
+
+
+sudo mkdir /etc/httpd/conf/extra  # 創建目錄（如果不存在）
+sudo nano /etc/httpd/conf/extra/httpd-vhosts.conf  # 創建並編輯檔案
+或
+
+
+sudo mkdir /etc/apache2/sites-available  # 創建目錄（如果不存在）
+sudo nano /etc/apache2/sites-available/httpd-vhosts.conf  # 創建並編輯檔案
+
+

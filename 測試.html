@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="css/slideshow.css">
+ 
+   <script src="js/slideshow1.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    
+
+</script>
+
+  </script>
+
+  <title>測試</title>
+
+  <script>
+    window.onload = function() {
+      var buttons = document.querySelectorAll("button");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.add("custom-button");
+      }
+    };
+
+    function toggleAdditionalInfo() {
+      var infoDiv = document.querySelector(".additional-interface");
+      infoDiv.classList.toggle("active");
+    }
+
+
+
+function toggleContent(contentId) {
+  var contentDiv = document.getElementById(contentId);
+  if (contentDiv.style.display === 'none') {
+    contentDiv.style.display = 'block';
+  } else {
+    contentDiv.style.display = 'none';
+  }
+}
+
+  </script>
+  </head>
+<body>
+
+
+  <style>
+  
+</style>
+
+
+<title>測試</title>
+
+<style>
+  
+</style>
+
+<div class="flex-container " >
+  <form action="/submit" method="post">
+    <a href="https://wp.ces.org.tw/">
+    <img src="images/魔法少年賈修.gif" alt="按鈕圖標" class="resized-image">
+  </a>
+      <div class="text-container">
+        <label for="username">用戶名稱：</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="email">電子郵件：</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="password">密碼：</label>
+        <input type="password" id="password" name="password" required>
+
+      
+   <button type="submit">提交</button>
+  <button type="reset">重置</button>
+  <button type="button" onclick="alert('Hello, world!')">點我</button>
+  
+ </div>
+ </form>
+   <div class="slideshow-container">
+    <img class="mySlides w3-animate-right" src="images/anna-rosar-ew-olGvgCCs-unsplash.jpg">
+    <img class="mySlides w3-animate-right" src="images/anna-rosar-ZxFyVBHMK-c-unsplash.jpg">
+    <img class="mySlides w3-animate-right" src="images/frederik-rosar-NDSZcCfnsbY-unsplash.jpg">
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+ 
+ 
+ 
+    </div>
+ <ul class="vertical-nav">
+    <li><a onclick="toggleContent('homeContent')">主頁</a></li>
+    <li><a onclick="toggleContent('newsContent')">新聞</a></li>
+    <li><a onclick="toggleContent('contactContent')">聯絡</a></li>
+    <!-- 可以繼續添加更多選項 -->
+  </ul>
+
+  <!-- 更多內容 -->
+  <div class="content" id="homeContent">
+      <h1>歡迎來到主頁</h1>
+  <p>這是我們網站的主頁內容。在這裡您可以找到有關我們的最新消息、產品和服務。</p>
+</div>
+
+<div class="content" id="newsContent">
+  <h1>最新消息</h1>
+  <p>這裡將顯示我們的最新消息和公告。請隨時查看以獲取更新。</p>
+</div>
+
+<div class="content" id="contactContent">
+  <h1>聯絡我們</h1>
+  <p>如果您有任何問題、建議或合作意向，請隨時與我們聯繫。您可以使用以下方式與我們取得聯繫。</p>
+  <ul>
+    <li>電子郵件：contact@example.com</li>
+    <li>電話：123-456-7890</li>
+    <li>地址：1234 虛構街道，虛構城市</li>
+  </ul>
+
+  <script>
+      function toggleAdditionalInfo2() {
+      var infoDiv = document.querySelector(".additional-interface2");
+      infoDiv.classList.toggle("active");
+    }
+  </script>
+  </div>
+ </form>
+</body>
+</html>
